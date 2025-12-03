@@ -1,0 +1,14 @@
+<article class="student-card" appHighlight>
+  <div class="left">
+    <div class="name">{{ student.name }}</div>
+    <div class="email" *ngIf="student.email">{{ student.email }}</div>
+    <div class="age-row">
+      <span class="label">Age</span>
+      <span class="age">{{ student.age | age }}</span>
+    </div>
+  </div>
+  <div class="right">
+    <a [routerLink]="['/edit', student.id]" class="edit">Edit</a>
+    <button class="remove" (click)="onRemove()">Remove</button>
+  </div>
+</article>

@@ -1,0 +1,19 @@
+.student-card {
+	display: flex;
+ 	justify-content: space-between;
+	align-items: flex-start;
+ 	padding: 14px 16px;
+ 	border: 1px solid #eef4fb;
+ 	border-radius: 10px;
+ 	background: #ffffff;
+ 	box-shadow: 0 4px 12px rgba(16,24,40,0.04);
+}
+.student-card .left { flex: 1; min-width: 0 }
+.student-card .name { font-weight: 700; font-size: 1.02rem; color: #0f1724; margin-bottom: 4px }
+.student-card .email { color: #6b7280; font-size: 0.92rem; margin-bottom: 8px }
+.student-card .age-row { display:flex; gap:8px; align-items:center }
+.student-card .age-row .label { color:#94a3b8; font-size:0.8rem; font-weight:600 }
+.student-card .age { color:#111827; font-weight:700 }
+.student-card .right { display:flex; gap:8px; align-items:center }
+.student-card a { color: #0f62fe; text-decoration:none; font-weight:600; padding:6px 8px; border-radius:6px }
+.student-card button { background: transparent; border: none; color: #d32f2f; cursor: pointer; font-weight:600; padding:6px 8px }

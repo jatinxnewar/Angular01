@@ -1,0 +1,38 @@
+<section>
+  <app-student-form (add)="handleAdd($event)"></app-student-form>
+
+  <div class="list-header">
+    <h2>Students</h2>
+    <div class="controls">
+        <input placeholder="Search by name" (input)="onSearch($any($event.target).value)" />
+        <div class="row" style="gap:1rem; margin:0.5rem 0 1rem 0">
+          <label style="margin-right:0.5rem">Sort</label>
+          <select (change)="onSort($any($event.target).value)">
+            <option value="name">Name</option>
+            <option value="age">Age</option>
+          </select>
+        </div>
+      <div class="paging">
+        <button class="pager left" (click)="prevPage()" aria-label="Previous page" [disabled]="page <= 1">
+          <!-- left arrow SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" stroke="#0f1724" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="page-indicator">Page {{ page }} / {{ totalPages$ | async }}</div>
+        <button class="pager right" (click)="nextPage()" aria-label="Next page" [disabled]="(totalPages$ | async) <= page">
+          <!-- right arrow SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" stroke="#0f1724" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards">
+    <ng-container *ngIf="filtered$ | async as list">
+      <app-student-card *ngFor="let s of list" [student]="s" (remove)="remove($event)"></app-student-card>
+    </ng-container>
+  </div>
+</section>

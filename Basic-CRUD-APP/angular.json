@@ -1,0 +1,40 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "basic-crud-app": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/basic-crud-app",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [{ "glob": "**/*", "input": "public" }],
+            "styles": ["src/styles.scss"]
+          },
+          "configurations": {
+            "production": {},
+            "development": { "optimization": false, "sourceMap": true }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": { "buildTarget": "basic-crud-app:build:production" },
+            "development": { "buildTarget": "basic-crud-app:build:development" }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": { "builder": "@angular-devkit/build-angular:karma", "options": { "tsConfig": "tsconfig.spec.json", "styles": ["src/styles.scss"] } }
+      }
+    }
+  }
+}

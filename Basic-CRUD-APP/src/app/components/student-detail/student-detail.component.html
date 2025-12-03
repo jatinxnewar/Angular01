@@ -1,0 +1,20 @@
+<section *ngIf="student">
+  <h2>Edit {{ student.name }}</h2>
+  <form (ngSubmit)="save()">
+    <div>
+      <label>Name</label>
+      <input name="name" [(ngModel)]="model.name" required />
+    </div>
+    <div>
+      <label>Email</label>
+      <input name="email" [(ngModel)]="model.email" />
+    </div>
+    <div>
+      <label>Age</label>
+      <input name="age" type="number" min="0" [(ngModel)]="model.age" #ageInput="ngModel" />
+      <div class="error" *ngIf="ageInput.value != null && ageInput.value < 0">Age cannot be negative</div>
+    </div>
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+</section>

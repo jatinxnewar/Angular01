@@ -1,0 +1,11 @@
+<section class="student-list">
+  <h2>Students</h2>
+  <app-student-form (add)="handleAdd($event)"></app-student-form>
+
+  <ul>
+    <li *ngFor="let s of students$ | async">
+      <strong>{{ s.name }}</strong> <span *ngIf="s.email"> - {{ s.email }}</span>
+      <button (click)="remove(s.id)">Remove</button>
+    </li>
+  </ul>
+</section>
