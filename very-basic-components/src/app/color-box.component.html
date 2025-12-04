@@ -1,0 +1,8 @@
+<div class="box" role="button" tabindex="0" (click)="onClick()"
+		 [style.background]="color" [style.width]="sizePx" [style.height]="sizePx"
+		 [attr.aria-label]="'Color box: ' + color">
+	<div class="meta">
+		<div class="hex">{{ color }}</div>
+		<div class="px">{{ sizePx }}</div>
+	</div>
+</div>

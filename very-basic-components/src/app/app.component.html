@@ -1,0 +1,11 @@
+<h1>{{ title }}</h1>
+<p>Welcome, <strong>{{ userName }}</strong> — this demo shows simple Angular components.</p>
+
+<!-- Using the HelloWorldComponent via its selector -->
+<hello-world [name]="userName"></hello-world>
+
+<!-- Using ColorBoxComponent with inputs to change color and size -->
+<p>
+  <label>Pick color: <input type="color" [(ngModel)]="boxColor"></label>
+</p>
+<color-box [color]="boxColor" [size]="120" (selected)="onBoxSelected($event)"></color-box>
