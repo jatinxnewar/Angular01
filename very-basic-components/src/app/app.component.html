@@ -4,8 +4,31 @@
 <!-- Using the HelloWorldComponent via its selector -->
 <hello-world [name]="userName"></hello-world>
 
-<!-- Using ColorBoxComponent with inputs to change color and size -->
-<p>
-  <label>Pick color: <input type="color" [(ngModel)]="boxColor"></label>
-</p>
-<color-box [color]="boxColor" [size]="120" (selected)="onBoxSelected($event)"></color-box>
+<div class="controls">
+  <div class="control-group">
+    <label>Pick color: <input type="color" [(ngModel)]="boxColor"></label>
+  </div>
+  
+  <div class="control-group">
+    <label>Size: <input type="range" min="40" max="200" [(ngModel)]="boxSize"> {{ boxSize }}px</label>
+  </div>
+  
+  <button (click)="reset()" class="reset-btn">Reset</button>
+</div>
+
+<!-- Using ColorBoxComponent with inputs and output -->
+<div class="demo-box">
+  <color-box [color]="boxColor" [size]="boxSize" (selected)="onBoxSelected($event)"></color-box>
+</div>
+
+<!-- Color history -->
+<div class="history" *ngIf="colorHistory.length > 0">
+  <h3>Recently clicked colors:</h3>
+  <div class="history-items">
+    <div *ngFor="let color of colorHistory" 
+         class="history-item" 
+         [style.background]="color"
+         (click)="selectFromHistory(color)"
+         [title]="color"></div>
+  </div>
+</div>
